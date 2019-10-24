@@ -1,0 +1,36 @@
+:root {
+  --primary: #FF0000;
+  --secondary: #282828;
+  --tertiary: #09d3ac;
+
+  --dark-background: #404040;
+  --dark-text: #fff;
+  --light-background: #fff;
+}
+
+.app-dark {
+  background-color: var(--dark-background);
+  color: var(--dark-text);
+}
+
+.App {
+  text-align: center;
+
+  .App-logo {
+    height: 40vmin;
+  }
+  
+  .App-header {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .App-link {
+    color: #09d3ac;
+  }
+}

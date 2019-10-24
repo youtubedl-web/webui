@@ -1,23 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react'
 
 // Logo
 import logo from './logo.svg';
+
 // Styles
-import './App.css';
+import './App.scss';
 
-class App extends React.Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+// Screens
+import Home from './screens/home'
 
-          <p>Wanna save that cool video from your favorite Youtuber so you can watch it offline? Go ahead. :)</p>
-          <input type="text" name="videourl"></input>
-        </header>
-      </div>
-    );
-  }
+const App = () => {
+  const [darkMode, toggleColorMode] = useState(false)
+  const handleToggleColorMode = () => toggleColorMode(!darkMode)
+
+  return (
+    <div className={"App" + (darkMode ? " app-dark" : " app-light")} >
+      <header className="App-header">
+        <img src={logo} />
+        <p>
+          <strong className="text-secondary">YouTube</strong> for the <span className="text-primary">Web</span>
+        </p>
+
+        <button onClick={handleToggleColorMode}>Putas</button>
+        <Home></Home>
+      </header>
+    </div>
+  )
 }
 
 export default App;
