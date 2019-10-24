@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 
 // Logo
-import logo from './logo.svg';
+import logoLight from './logo.svg';
+import logoDark from './logo-dark.svg';
 
 // Styles
 import './App.scss';
@@ -9,21 +10,34 @@ import './App.scss';
 // Screens
 import Home from './screens/home'
 
+// Utils
+import { getCookieByName, setCookie } from './utils/cookies'
+
 const App = () => {
-  const [darkMode, toggleColorMode] = useState(false)
-  const handleToggleColorMode = () => toggleColorMode(!darkMode)
+  // get user dark mode status depending on the cookie
+  const isDarkModeActive = getCookieByName("ytdl-darkmode") === "1" ? true : false
+
+  const [darkMode, toggleColorMode] = useState(isDarkModeActive)
+  const handleToggleColorMode = () => {
+    setCookie("ytdl-darkmode", (!darkMode ? "1" : "0"), 365)
+    toggleColorMode(!darkMode)
+  }
 
   return (
     <div className={"App" + (darkMode ? " app-dark" : " app-light")} >
       <header className="App-header">
-        <img src={logo} />
+        <img src={logoDark} alt="YoutubeDL for the web logo" className="hide--on-dark"/>
+        <img src={logoLight} alt="YoutubeDL for the web logo" className="hide--on-light"/>
         <p>
-          <strong className="text-secondary">YouTube</strong> for the <span className="text-primary">Web</span>
+          <strong className="color--theme-primary">YouTube</strong> for the <span className="text-primary">Web</span>
         </p>
 
-        <button onClick={handleToggleColorMode}>Putas</button>
         <Home></Home>
       </header>
+
+      <button className="toggleLightMode" onClick={handleToggleColorMode}>
+        <i className="material-icons">highlight</i>
+      </button>
     </div>
   )
 }

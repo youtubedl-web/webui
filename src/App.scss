@@ -1,24 +1,54 @@
 :root {
-  --primary: #FF0000;
-  --secondary: #282828;
-  --tertiary: #09d3ac;
+  --theme-primary: #FF0000;
+  --theme-secondary: #282828;
+  --theme-tertiary: #09d3ac;
 
-  --dark-background: #404040;
-  --dark-text: #fff;
-  --light-background: #fff;
+  --theme-dark-background: #404040;
+  --theme-dark-text: #fff;
+  --theme-light-background: #fff;
+  --theme-light-text: #282828;
+}
+
+.color--theme-primary {
+  color: var(--theme-primary);
+}
+.color--theme-secondary {
+  color: var(--theme-secondary);
+}
+.color--theme-tertiary {
+  color: var(--theme-tertiary);
+}
+
+.app-light {
+  .hide--on-light {
+    display: none;    
+  }
 }
 
 .app-dark {
-  background-color: var(--dark-background);
-  color: var(--dark-text);
+  --primary: var(--theme-secondary);
+  --secondary: var(--theme-primary);
+  --tertiary: var(--theme-tertiary);
+
+  background: var(--theme-dark-background);
+  color: var(--theme-dark-text);
+
+  .hide--on-dark {
+    display: none;
+  }
+
+  .toggleLightMode {
+    color: #FFFF66;
+
+    &:hover {
+      color: var(--theme-light-text);
+    }
+  }
 }
 
 .App {
   text-align: center;
-
-  .App-logo {
-    height: 40vmin;
-  }
+  transition: 0.3s ease background-color;
   
   .App-header {
     min-height: 100vh;
@@ -27,10 +57,27 @@
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-    color: white;
   }
-  
-  .App-link {
-    color: #09d3ac;
+
+  .toggleLightMode {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    -webkit-appearance: none;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.2s ease color;
+    transform: rotate(180deg);
+    color: var(--theme-light-text);
+
+    i {
+      font-size: 2rem;
+    }
+
+    &:hover {
+      color: #FFFF66;
+    }
   }
 }

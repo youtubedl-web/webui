@@ -4,8 +4,6 @@ body {
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  transition: 0.3s ease background-color;
 }
 
 .text-primary {
@@ -15,3 +13,6 @@ body {
 .text-secondary {
   color: var(--secondary);
 }
+
+// import fonts
+@import "fonts.scss"
