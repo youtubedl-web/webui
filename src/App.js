@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 
 // Logo
-import logoLight from './logo.svg';
-import logoDark from './logo-dark.svg';
+import logoLight from './logo/logo.svg';
+import logoDark from './logo/logo-dark.svg';
 
 // Styles
-import './App.scss';
+import './scss/App.scss';
 
 // Screens
 import Home from './screens/home'
