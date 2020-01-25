@@ -4,16 +4,16 @@ input {
   width: 40rem;
   max-width: 75%;
   background-color: rgba(255, 0, 0, .85);
-  background-image: url(/media/play.svg);
-  background-position: 0.75rem 50%;
-  background-size: 2rem;
-  background-repeat: no-repeat;
   color: #fff;
   font-size: 1.5rem;
-  padding: 0.75rem 1.5rem 0.75rem 3rem;
+  padding: 0.75rem 1rem;
   border: none;
   border-radius: 0.4rem;
   box-shadow: #ff6666 0px 2px 30px;
   outline: none;
   box-sizing: border-box;
+
+  &::placeholder {
+    color: #ffffff90;
+  }
 }
