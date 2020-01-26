@@ -1,15 +1,13 @@
 import React, { useState } from 'react'
 
-import { saveAs } from 'file-saver'
-
-import { getAudioLink, startDownload } from '../../utils/api'
+import { getAudioLink } from '../../utils/api'
 
 import './index.scss'
 
 const SearchBar = () => {
   const [link, setLink] = useState('')
-  const [hash, setDownloadHash] = useState('')
-  const [downloadReady, setDownloadReady] = useState(false)
+  const [downloadLink, setDownloadLink] = useState('')
+  const [downloadState, setDownloadState] = useState(0)
   
   // update link hook whenever the input changes
   const handleLinkChange = (e) => setLink(e.target.value);
@@ -22,24 +20,21 @@ const SearchBar = () => {
   // fetch the download link for the audio file
   const getLink = async (link) => {
     let videoID = link.split("v=")[1]
+
+    // set loading status
+    setDownloadState(1)
     let res = await getAudioLink(videoID)
-      
-    setDownloadHash(res.URL)
-    setDownloadReady(true)
+
+    // update download hash
+    setDownloadLink(res.URL)
+    // set ready status
+    setDownloadState(2)
   }
 
-  const download = async (e) => {
-    if (downloadReady) {
-      await startDownload(hash)
-        .then(res => {
-          saveAs(new Blob([res.body], {type: "audio/ogg;charset=utf-8"}))
-        })
-    } else {
-      await getLink(link)
-      
-      if (downloadReady) await startDownload(hash)
-        .then(res => saveAs(new Blob([res.body], {type: "charset=utf-8"})))
-    }
+  const download = async () => {
+    // only fetch the download link if the link
+    // is not currently loading and not ready to download
+    if (downloadState !== 1 && downloadState !== 2) await getLink(link)
   }
 
   return (
@@ -49,10 +44,15 @@ const SearchBar = () => {
       <div className="flex">
         <input type="text" name="videourl" placeholder="Cat video link goes here..."
           value={link} onChange={handleLinkChange} onKeyPress={handleKeyClick}></input>
-
-        <button onClick={download}>
-          <p>{ downloadReady ? "Download" : "Generate URL" }</p>
-        </button>
+        
+        <a href={downloadState === 2 ? downloadLink : undefined} download onClick={download}>
+          <button>
+            <p>{downloadState === 0
+              ? "Get download link"
+              : (downloadState === 1 ? "Loading..." : "Download") }
+            </p>
+          </button>
+        </a>
       </div>
     </React.Fragment>
   )
