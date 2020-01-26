@@ -13,6 +13,7 @@ input {
   border: 1px solid var(--theme-dark-background);
   outline: none;
   box-sizing: border-box;
+  transition: 0.2s ease box-shadow;
 
   &::placeholder {
     color: #ffffff90;
@@ -22,13 +23,13 @@ input {
 button {
   font-size: 1.5rem;
   background-color: rgba(255, 0, 0, .85);
-  color: var(--theme-dark-text-secondary);
+  color: var(--theme-dark-text-primary);
   padding: 0.75rem 1rem;
   border: none;
   outline-color: var(--theme-primary);
   margin-left: 1rem;
   cursor: pointer;
-  transition: 0.2s ease color;
+  transition: 0.2s ease box-shadow;
 
   p {
     font-size: 1.5rem;
@@ -36,6 +37,6 @@ button {
   }
 
   &:hover {
-    color: var(--theme-dark-text-primary);
+    box-shadow: var(--theme-primary) 0 2px 10px;
   }
 }

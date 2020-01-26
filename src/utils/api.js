@@ -18,16 +18,11 @@ export async function getAudioLink(link) {
     .then(res => res.json())
 }
 
-export async function startDownload(hash) {
+export async function startDownload(downloadLink) {
   let fetchData = {
     method: 'GET',
-    mode: 'cors',
-    headers: {
-      "Content-Type": "application/json; charset=utf-8",
-      "Content-Disposition": "application/octet-stream",
-    }
+    mode: 'cors'
   }
 
-  return await fetch(`${API_SCHEMA}://${hash}`, fetchData)
-    .then(res => res.json())
+  return await fetch(`${API_SCHEMA}://${downloadLink}`, fetchData)
 }

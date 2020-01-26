@@ -29,7 +29,7 @@ const App = () => {
         <img src={logoDark} alt="YoutubeDL for the web logo" className="hide--on-dark"/>
         <img src={logoLight} alt="YoutubeDL for the web logo" className="hide--on-light"/>
         <p>
-          <strong className="color--theme-primary">YouTube</strong> for the <span className="text-primary">Web</span>
+          <strong className="color--theme-primary">YouTube</strong>-dl for the <span className="text-primary">Web</span>
         </p>
 
         <Home></Home>
