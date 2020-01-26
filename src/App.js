@@ -5,27 +5,27 @@ import logoLight from './logo/logo.svg';
 import logoDark from './logo/logo-dark.svg';
 
 // Styles
-import './scss/App.scss';
+import './scss/app.scss';
 
 // Screens
 import Home from './screens/home'
 
-// Utils
-import { getCookieByName, setCookie } from './utils/cookies'
-
 const App = () => {
   // get user dark mode status depending on the cookie
-  const isDarkModeActive = getCookieByName("ytdl-darkmode") === "1" ? true : false
+  // TODO: implement light theme
+  // const isDarkModeActive = getCookieByName("ytdl-darkmode") === "1" ? true : false
+  const isDarkModeActive = true
 
   const [darkMode, toggleColorMode] = useState(isDarkModeActive)
   const handleToggleColorMode = () => {
-    setCookie("ytdl-darkmode", (!darkMode ? "1" : "0"), 365)
-    toggleColorMode(!darkMode)
+    // TODO: implement light theme
+    // setCookie("ytdl-darkmode", (!darkMode ? "1" : "0"), 365)
+    toggleColorMode(darkMode)
   }
 
   return (
-    <div className={"App" + (darkMode ? " app-dark" : " app-light")} >
-      <header className="App-header">
+    <div className={"app" + (darkMode ? " app-dark" : " app-light")} >
+      <header className="app-header">
         <img src={logoDark} alt="YoutubeDL for the web logo" className="hide--on-dark"/>
         <img src={logoLight} alt="YoutubeDL for the web logo" className="hide--on-light"/>
         <p>

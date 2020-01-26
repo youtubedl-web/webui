@@ -1,12 +1,28 @@
+// import fonts
+@import "fonts.scss";
+
+body,
+html {
+  margin: 0;
+  font-family: "Roboto";
+  font-size: 1rem;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 :root {
   --theme-primary: #FF0000;
-  --theme-secondary: #282828;
+  --theme-secondary: #1f1f1f;
   --theme-tertiary: #09d3ac;
 
-  --theme-dark-background: #404040;
-  --theme-dark-text: #fff;
+  --theme-dark-background: #1f1f1f;
+  --theme-dark-text-primary: #fff;
+  --theme-dark-text-secondary: #aaaaaa;
+
+
   --theme-light-background: #fff;
-  --theme-light-text: #282828;
+  --theme-light-text-primary: #282828;
 }
 
 .color--theme-primary {
@@ -19,38 +35,32 @@
   color: var(--theme-tertiary);
 }
 
-.app-light {
-  .hide--on-light {
-    display: none;    
-  }
-}
-
-.app-dark {
-  --primary: var(--theme-secondary);
-  --secondary: var(--theme-primary);
-  --tertiary: var(--theme-tertiary);
-
-  background: var(--theme-dark-background);
-  color: var(--theme-dark-text);
-
-  .hide--on-dark {
-    display: none;
-  }
-
-  .toggleLightMode {
-    color: #FFFF66;
-
-    &:hover {
-      color: var(--theme-light-text);
-    }
-  }
-}
-
-.App {
+.app {
   text-align: center;
   transition: 0.3s ease background-color;
+
+  &.app-dark {
+    --primary: var(--theme-secondary);
+    --secondary: var(--theme-primary);
+    --tertiary: var(--theme-tertiary);
   
-  .App-header {
+    background: var(--theme-dark-background);
+    color: var(--theme-dark-text-primary);
+  
+    .hide--on-dark {
+      display: none;
+    }
+  
+    .toggleLightMode {
+      color: var(--theme-dark-text-secondary);
+  
+      &:hover {
+        color: var(--theme-dark-text-primary);
+      }
+    }
+  }
+  
+  .app-header {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -70,14 +80,9 @@
     cursor: pointer;
     transition: 0.2s ease color;
     transform: rotate(180deg);
-    color: var(--theme-light-text);
 
     i {
       font-size: 2rem;
-    }
-
-    &:hover {
-      color: #FFFF66;
     }
   }
 }
