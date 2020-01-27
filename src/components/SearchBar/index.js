@@ -6,14 +6,14 @@ import './index.scss'
 
 const SearchBar = () => {
   const [link, setLink] = useState('')
-  const [downloadLink, setDownloadLink] = useState('')
+  const [downloadLink, setDownloadLink] = useState('#')
   const [downloadState, setDownloadState] = useState(0)
   
   // update link hook whenever the input changes
   const handleLinkChange = (e) => setLink(e.target.value);
   const handleKeyClick = (e) => {
-    if (e.target.value && e.target.value.length > 0) {
-      getLink(e.target.value)
+    if (e.key === "Enter" && link.length > 0) {
+      getLink(link)
     }
   }
 
@@ -31,10 +31,10 @@ const SearchBar = () => {
     setDownloadState(2)
   }
 
-  const download = async () => {
+  const download = async (e) => {
     // only fetch the download link if the link
     // is not currently loading and not ready to download
-    if (downloadState !== 1 && downloadState !== 2) await getLink(link)
+    if (downloadState !== 1 && downloadState !== 2 && link.length > 6) await getLink(link)
   }
 
   return (
@@ -45,7 +45,7 @@ const SearchBar = () => {
         <input type="text" name="videourl" placeholder="Cat video link goes here..."
           value={link} onChange={handleLinkChange} onKeyPress={handleKeyClick}></input>
         
-        <a href={downloadState === 2 ? downloadLink : undefined} download onClick={download}>
+        <a href={downloadLink} download={downloadState === 2 ? true : false} onClick={download}>
           <button>
             <p>{downloadState === 0
               ? "Get download link"
