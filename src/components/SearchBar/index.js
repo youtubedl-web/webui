@@ -43,10 +43,10 @@ const SearchBar = () => {
       
       <div className="flex">
         <input type="text" name="videourl" placeholder="Cat video link goes here..."
-          value={link} onChange={handleLinkChange} onKeyPress={handleKeyClick}></input>
+          value={link} onChange={handleLinkChange} onKeyPress={handleKeyClick} class="videourl"></input>
         
         <a href={downloadLink} download={downloadState === 2 ? true : false} onClick={download}>
-          <button>
+          <button class="download">
             <p>{downloadState === 0
               ? "Get download link"
               : (downloadState === 1 ? "Loading..." : "Download") }
