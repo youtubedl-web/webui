@@ -10,7 +10,13 @@ const SearchBar = () => {
   const [downloadState, setDownloadState] = useState(0)
   
   // update link hook whenever the input changes
-  const handleLinkChange = (e) => setLink(e.target.value);
+  const handleLinkChange = (e) => {
+    setLink(e.target.value)
+
+    // whenever the link changes, reset the button text and the download link
+    setDownloadState(0)
+    setDownloadLink('#')
+  };
   const handleKeyClick = (e) => {
     if (e.key === "Enter" && link.length > 0) {
       getLink(link)
