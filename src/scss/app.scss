@@ -23,6 +23,8 @@ html {
 
   --theme-light-background: #fff;
   --theme-light-text-primary: #282828;
+
+  --heart-size: 1rem;
 }
 
 .color--theme-primary {
@@ -36,6 +38,7 @@ html {
 }
 
 .app {
+  height: 100vh;
   text-align: center;
   transition: 0.3s ease background-color;
 
@@ -59,15 +62,6 @@ html {
       }
     }
   }
-  
-  .app-header {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-  }
 
   .toggleLightMode {
     position: absolute;
@@ -83,6 +77,50 @@ html {
 
     i {
       font-size: 2rem;
+    }
+
+    @media (max-width: 720px) {
+      display: none;
+    }
+  }
+
+  main {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+
+    header {
+      font-size: calc(10px + 2vmin);
+  
+      .logo {
+        max-width: 10rem;
+        max-height: 10rem;
+      }
+
+      @media (max-width: 720px) {
+        position: fixed;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 4rem;
+
+        img {
+          width: 2.5rem;
+          height: 2.5rem;
+        }
+
+        p {
+          display: none;
+        }
+      }
+    }
+
+    @media (max-width: 720px) {
     }
   }
 }

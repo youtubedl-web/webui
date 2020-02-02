@@ -47,9 +47,9 @@ const SearchBar = () => {
     <React.Fragment>
       <p id="get-started">Wanna save that cool video from your favorite Youtuber so you can watch it offline?<br></br> Go ahead. :)</p>
       
-      <div className="flex">
+      <div className="flex" id="input-group">
         <input type="text" name="videourl" placeholder="Cat video link goes here..."
-          value={link} onChange={handleLinkChange} onKeyPress={handleKeyClick} class="videourl"></input>
+          value={link} onChange={handleLinkChange} onKeyPress={handleKeyClick} className="videourl"></input>
         
         <a href={downloadLink} download={downloadState === 2 ? true : false} onClick={download}>
           <button className="download">

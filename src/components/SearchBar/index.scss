@@ -1,42 +1,82 @@
-input.videourl {
-  -webkit-appearance: none;
-
-  width: 40rem;
-  max-width: 75%;
-  // background-color: rgba(255, 0, 0, .85);
-  background: #282828;
-  color: #fff;
+p#get-started {
   font-size: 1.5rem;
-  padding: 0.75rem 1rem;
-  border: none;
-  // border-radius: 0.4rem;
-  border: 1px solid var(--theme-dark-background);
-  outline: none;
-  box-sizing: border-box;
-  transition: 0.2s ease box-shadow;
+  max-width: 65%;
 
-  &::placeholder {
-    color: #ffffff90;
+  @media (max-width: 1080px) {
+    max-width: 80%;
+  }
+
+  @media (max-width: 860px) {
+    max-width: 90%;
   }
 }
 
-button.download {
-  font-size: 1.5rem;
-  background-color: rgba(255, 0, 0, .85);
-  color: var(--theme-dark-text-primary);
-  padding: 0.75rem 1rem;
-  border: none;
-  outline-color: var(--theme-primary);
-  margin-left: 1rem;
-  cursor: pointer;
-  transition: 0.2s ease box-shadow;
+#input-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60rem;
+  max-width: 95%;
 
-  p {
+  input.videourl {
+    -webkit-appearance: none;
+    display: block;
+    flex-basis: 75%;
+    flex-shrink: 1;
+    max-width: 75%;
+    background: #282828;
+    color: #fff;
     font-size: 1.5rem;
-    margin: 0;
+    padding: 0.75rem 1rem;
+    border: none;
+    // border-radius: 0.4rem;
+    border: 1px solid var(--theme-dark-background);
+    outline: none;
+    box-sizing: border-box;
+    transition: 0.2s ease box-shadow;
+
+    &::placeholder {
+      color: #ffffff90;
+    }
   }
 
-  &:hover {
-    box-shadow: var(--theme-primary) 0 2px 10px;
+  button.download {
+    flex-grow: 1;
+    min-width: fit-content;
+    font-size: 1.5rem;
+    background-color: rgba(255, 0, 0, .85);
+    color: var(--theme-dark-text-primary);
+    padding: 0.75rem 1rem;
+    border: none;
+    outline-color: var(--theme-primary);
+    margin-left: 1rem;
+    cursor: pointer;
+    transition: 0.2s ease box-shadow;
+
+    p {
+      font-size: 1.5rem;
+      margin: 0;
+    }
+
+    &:hover {
+      box-shadow: var(--theme-primary) 0 2px 10px;
+    }
+  }
+
+  @media (max-width: 1080px) {
+    flex-direction: column;
+
+    input.videourl {
+      width: 70%;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  @media (max-width: 860px) {
+    input.videourl {
+      width: 90%;
+      max-width: 90%;
+      margin-bottom: 1.5rem;
+    }
   }
 }

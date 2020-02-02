@@ -1,9 +1,16 @@
 import React from 'react'
 
+// styles
+import './index.scss'
+
 const Footer = () => {
   return (
     <footer>
-      Made with ♥ by <a href="https://github.com/youtubedl-web"></a>
+      <div className="container">
+        Made with <span className="heart"></span>
+      </div>
     </footer>
   )
 }
+
+export default Footer;
