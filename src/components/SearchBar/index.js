@@ -54,7 +54,7 @@ const SearchBar = () => {
         <input type="text" name="videourl" placeholder="Cat video link goes here..."
           value={link} onChange={handleLinkChange} onKeyPress={handleKeyClick} className="videourl"></input>
         
-        <a href={downloadLink} target={downloadState === 2 && mobileAndTabletcheck() === true ? "_blank" : undefined} download={downloadState === 2 && mobileAndTabletcheck() === false ? true : false} onClick={download}>
+        <a href={downloadLink} download={downloadState === 2 && mobileAndTabletcheck() === false ? true : false} onClick={download}>
           <button className="download">
             <p>{downloadState === 0
               ? "Get download link"
