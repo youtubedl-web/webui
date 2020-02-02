@@ -52,7 +52,7 @@ const SearchBar = () => {
           value={link} onChange={handleLinkChange} onKeyPress={handleKeyClick} class="videourl"></input>
         
         <a href={downloadLink} download={downloadState === 2 ? true : false} onClick={download}>
-          <button class="download">
+          <button className="download">
             <p>{downloadState === 0
               ? "Get download link"
               : (downloadState === 1 ? "Loading..." : "Download") }
