@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 import { getAudioLink } from '../../utils/api'
 import { mobileAndTabletcheck } from '../../utils/devices'
+import { getVideoID } from '../../utils/link'
 
 import './index.scss'
 
@@ -26,8 +27,7 @@ const SearchBar = () => {
 
   // fetch the download link for the audio file
   const getLink = async (link) => {
-    let videoID = link.split("v=")[1]
-
+    let videoID = getVideoID(link)
     // set loading status
     setDownloadState(1)
     let res = await getAudioLink(videoID)
